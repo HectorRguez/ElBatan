@@ -1,64 +1,73 @@
-//Function either POSTs or GETs from nodeJs backend data
-async function InteractBackEnd(method, data, page){
-    data = JSON.stringify({parcel: data});
-    //Get method dosen't allow body
-    if(method == "GET")data = null;
-    const url = `http://${window.location.hostname}:8080/${method}?path=${page}`;
-    const result =  await fetch(url,
-    {
-        method:method,
-        headers:{
-            "Content-Type": "application/json"
-        },
-        body:data
+$(document).ready(function() {
+    // Initialize EmailJS with your public key
+    emailjs.init("viX_yg8yLILomxjI5");  // Replace with your actual public key
+    
+    // Mobile menu toggle
+    $('#mobile-menu').click(function() {
+        $('.nav-menu').toggleClass('active');
+        $(this).find('.bar').each(function(index) {
+            $(this).toggleClass('bar-' + (index + 1));
+        });
     });
-    if(result.status == 404) window.location.replace("/404");
-    return result.json();
-}
 
-function IterateThroughChildren(json, html){
-
-    //Opening element tag
-    html += `<${json.type}`;
-
-    //Looping through element properties
-    for(var keys in json){
-        //Avoids properties used elsewhere or that cant be inserted inside html tag
-        if(keys != "children" && keys != "type" && keys != "text"){
-            html += ` ${keys}="${json[keys]}" `;
+    // Smooth scrolling
+    $('a[href^="#"]').on('click', function(e) {
+        e.preventDefault();
+        
+        var target = this.hash;
+        var $target = $(target);
+        
+        if ($target.length) {
+            $('html, body').animate({
+                scrollTop: $target.offset().top - 70
+            }, 800);
+            
+            // Close mobile menu if open
+            $('.nav-menu').removeClass('active');
         }
-    }
+    });
 
-    //Closing element tag and adding text
-    html += ">";
-    if(json.text)html += json.text;
+    // Active navigation on scroll
+    $(window).scroll(function() {
+        var scrollPos = $(document).scrollTop();
+        
+        $('.nav-link').each(function() {
+            var currLink = $(this);
+            var refElement = $(currLink.attr("href"));
+            
+            if (refElement.length && refElement.position().top <= scrollPos + 100 && refElement.position().top + refElement.height() > scrollPos) {
+                $('.nav-link').removeClass("active");
+                currLink.addClass("active");
+            }
+        });
+    });
 
-    //If element has children call function wich will append html code inside element
-    if(json.children){
-        for(var n in json.children){
-            var htmlChildren = "";
-            htmlChildren += IterateThroughChildren(json.children[n], htmlChildren);
-            html += htmlChildren;
-        }
-    }
-
-    //Close element
-    html += `</${json.type}>`;
-    
-    return html;
-}
-
-function JsonToHtml(json){
-
-    //Loop through elements to append
-    for(var children in json){
-        var html = "";
-        console.log(json[children].type)
-        if(children != "parent")html +=IterateThroughChildren(json[children], html);
-        $(json.parent).append(html);
-    }
-    
-}
-
-const page = location.pathname;
-InteractBackEnd("GET", null, page).then((data) => { JsonToHtml(data)});
+    // Contact form submission
+    $('#contactForm').on('submit', function(e) {
+        e.preventDefault();
+        
+        const btn = $(this).find('.submit-btn');
+        const originalText = btn.text();
+        btn.text('Enviando...').prop('disabled', true);
+        
+        // Send email using EmailJS
+        emailjs.send(
+            "service_90f7zkl",     // Replace with your Service ID
+            "template_k873q7s",    // Replace with your Template ID
+            {
+                from_name: $('#name').val(),
+                from_email: $('#email').val(),
+                message: $('#message').val()
+            }
+        )
+        .then(function(response) {
+            alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
+            $('#contactForm')[0].reset();
+            btn.text(originalText).prop('disabled', false);
+        }, function(error) {
+            alert('Error al enviar el mensaje. Por favor, intenta de nuevo.');
+            console.error('EmailJS error:', error);
+            btn.text(originalText).prop('disabled', false);
+        });
+    });
+});

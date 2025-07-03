@@ -1,49 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description"content="Papeles artesanos hechos a mano en la Palma. Encuadernaciones artesanales, tintas artesanales.>
+    <meta name="description" content="Papeles artesanos hechos a mano en La Palma. Encuadernaciones artesanales, tintas artesanales.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="canonical" href="https://127.0.0.1" />
-
+    <link rel="canonical" href="https://elbatan.es" />
+    <link rel="icon" type="image/png" href="media/ContornoLaPalma.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;700;800&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="css/Header.css">
-    <link rel="stylesheet" href="css/index.css">
-
-    <title>El Batán - papeles artesanos la palma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>El Batán - Papeles Artesanos La Palma</title>
 </head>
-
 <body>
-    <nav>
-        <h1>Menu</h1>
-        <ul>
-            <li><a href="/"><h2>Inicio</h2></a></li>
-            <li>
-                <h2>Productos</h2>
-                <ul>
-                    <li><a href="/PapelesArtesanos">Papeles artesanos</a></li>
-                    <li><a href="/Encuadernaciones">Encuadernaciones</a></li>
-                    <li><a href="/AlgoMas">Algo más</a></li>
-                </ul>
-            </li>
-            <li>
-                <h2>EL proceso</h2>
-                <ul>
-                    <li><a href="/Km0">Km0</a></li>
-                    <li><a href="/ElTaller">ElTaller</a></li>
-                    <li><a href="/SinCodigoDeBarras">#SinCódigoDeBarras</a></li>
-                </ul>
-            </li>
-            <li><a href="/Blog"><h2>Blog</h2></a></li>
-        </ul>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="media/logoElBatan.png" alt="El Batán Logo">
+            </div>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#productos" class="nav-link">Productos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#papeles">Papeles Artesanos</a></li>
+                        <li><a href="#encuadernaciones">Encuadernaciones</a></li>
+                        <li><a href="#algo-mas">Algo Más</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#proceso" class="nav-link">El Proceso</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#km0">Km0</a></li>
+                        <li><a href="#taller">El Taller</a></li>
+                        <li><a href="#sin-codigo">#SinCódigoDeBarras</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+        </div>
     </nav>
-</body>
-<script src="static/js/index.js"></script>
 
+    <!-- Hero Section with Torn Effect -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <div class="logo-large">
+                <img src="media/logoElBatan.png" alt="El Batán Logo" class="hero-logo">
+            </div>
+            <p class="hero-description">"Tradición y artesanía en cada hoja"</p>
+        </div>
+        <!-- Tear 3 at bottom of hero -->   
+        <div class="tear-effect bottom">
+            <img src="media/Tears/tear3.svg" alt="Torn paper effect" class="tear-svg">
+        </div>
+    </section>
+
+    <!-- Productos Section -->
+    <section id="productos" class="section productos">
+        <div class="container">
+            <h2 class="section-title">Nuestros Productos</h2>
+            
+            <div id="papeles" class="product-category">
+                <h3>Papeles Artesanos</h3>
+                <div class="product-grid">
+                    <div class="product-card paper-card">
+                        <img src="media/sobreMi.avif" alt="Papel Artesano">
+                        <h4>Papel Hecho a Mano</h4>
+                        <p>Cada hoja es única, elaborada con fibras naturales siguiendo técnicas tradicionales.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="encuadernaciones" class="product-category">
+                <h3>Encuadernaciones</h3>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="media/encuadernacionProduct.avif" alt="Encuadernación">
+                        <h4>Libros Artesanales</h4>
+                        <p>Encuadernaciones hechas a mano con los mejores materiales y técnicas tradicionales.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="algo-mas" class="product-category algo-mas-section">
+                <h3>Algo Más</h3>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image-overlay">
+                            <img src="media/algoMasArtesanoProduct.avif" alt="Productos Especiales">
+                        </div>
+                        <h4>Productos Especiales</h4>
+                        <p><b>Sobres artesanales</b>, <b>tarjetas</b> y <b>productos personalizados</b> para ocasiones especiales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- El Proceso Section -->
+    <section id="proceso" class="section proceso">
+        <!-- Tear 2 at top of proceso -->
+        <div class="tear-effect top">
+            <img src="media/Tears/Tear2.svg" alt="Torn paper effect" class="tear-svg">
+        </div>
+        
+        <div class="container">
+            <h2 class="section-title">Nuestro Proceso</h2>
+            
+            <div class="process-grid">
+                <div id="km0" class="process-item">
+                    <h3>Km0</h3>
+                    <p>Utilizamos materias primas locales, reduciendo nuestra huella de carbono y apoyando la economía local de La Palma.</p>
+                </div>
+
+                <div id="taller" class="process-item">
+                    <h3>El Taller</h3>
+                    <p>Un espacio donde la tradición se encuentra con la creatividad. Cada pieza es elaborada con dedicación y maestría.</p>
+                </div>
+
+                <div id="sin-codigo" class="process-item">
+                    <h3>#SinCódigoDeBarras</h3>
+                    <p>Productos únicos, sin producción en masa. Cada pieza cuenta su propia historia.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tear 3 at bottom of proceso -->
+        <div class="tear-effect bottom">
+            <img src="media/Tears/tear3.svg" alt="Torn paper effect" class="tear-svg">
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="section contacto">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Nombre" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" rows="5" placeholder="Mensaje" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 El Batán - Papeles Artesanos La Palma. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="static/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</body>
 </html>
