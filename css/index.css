@@ -1,0 +1,29 @@
+::root{
+    --light-background:#F8F6F3;
+    --dark-background:#292D2E;
+
+    --light-forgeround:#292D2E;
+    --dark-foreground:#F8F6F3;
+
+    --light-accent:#292D2E;
+    --dark-accent:#B58A5D;
+}
+
+*{
+    font-family: 'Inter', Roboto;
+}
+
+body, html{
+    height:100%;
+    width:100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+body{
+    overflow-y:auto;
+}
+
+svg *{
+    fill:var(--light-background);
+}

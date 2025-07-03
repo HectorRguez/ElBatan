@@ -1,0 +1,103 @@
+header{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    color: var(--f-color);
+    position:sticky;
+    padding:10px 20px;
+    box-sizing: border-box;
+    background-color: transparent;/*rgba(0, 0, 0, 0.541);*/
+    font-family:Encode Sans;
+    z-index: 10;
+    justify-items: center;
+    transition:0.5s;
+    width: 100%;
+    top:0;
+}
+#logo{
+    height: 60px;
+    width:auto;
+}
+.white{
+    color:white;
+}
+.black{
+    color:black;
+}
+
+/*Header menu*/
+.menuItemContainer{
+    font-size: 25px;
+    font-weight: 400;
+    display:grid;
+    grid-template-rows: auto;
+    position: relative;
+    width: min-content;
+    margin: -10px;
+}
+@keyframes example {
+    0%   { width:0px; height:0px;}
+    50%  {width:10px; height:10px;}
+    100% { width:95%; height:4px;}
+}
+.menuItemContainer:hover .selectedMenuItem{
+    animation-name: example;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+.menuItemTitle{
+    align-self: center;
+    display: flex;
+    flex-direction:column;
+    transition:0.5s;
+    white-space: nowrap;
+}
+.menuSubItem{
+    display: flex;
+    flex-direction: row;
+    bottom:-10px;
+    opacity: 0;
+    background-color: transparent;
+    transition: 0.1s;
+    /*height: 50px;*/
+    border:none;
+    padding:5px;
+    margin: 0;
+    position: absolute;
+    color:whitesmoke;
+    background-color: rgba(0, 0, 0, 0.521);
+}
+.menuSubItemSelector{
+    width:0px;
+    height:0px;
+    transition: 0.2s;
+}
+.menuSubItem:hover .menuSubItemSelector{
+    width:25px;
+}
+.menuSubItem:hover label{
+    width:100%;
+}
+.menuSubItem:hover{
+    background-color: rgb(255,255,255, 0.837);
+    color:rgb(68, 68, 68);
+}
+.selectedMenuItem{
+    border-radius: 50px;
+    justify-self: center;
+    align-self: center;
+    background-color: rgb(105, 105, 105);
+    width:0px;
+    height:0px;
+    transition: 0.2s;
+}
+.selectedSubMenuItem{
+    border-radius: 50%;
+    justify-self: center;
+    align-self: center;
+    background-color: transparent;
+    width:0px;
+    height:0px;
+    transition: 0.1s;
+    margin-right:5px;
+}
